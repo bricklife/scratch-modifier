@@ -30,6 +30,15 @@ try {
         code = code.replace(/Scratch 3.0 GUI/g, title);
         fs.writeFileSync(filePath, code);
     }
+
+    const hideComingSoon = core.getInput('hide-coming-soon');
+    if (hideComingSoon) {
+        console.log(`hide-coming-soon: '${hideComingSoon}'`);
+        const filePath = path.join(scratchGuiDir, 'src/playground/render-gui.jsx');
+        let code = fs.readFileSync(filePath, 'utf-8');
+        code = code.replace(/^\s*showComingSoon\n/gm, '');
+        fs.writeFileSync(filePath, code);
+    }
 } catch (error) {
     core.setFailed(error.message);
 }

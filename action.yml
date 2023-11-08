@@ -11,6 +11,8 @@ inputs:
     description: 'Home URL'
   title:
     description: 'Title'
+  hide-coming-soon:
+    description: 'Hide coming soon'
 runs:
   using: 'node20'
   main: 'dist/index.js'
