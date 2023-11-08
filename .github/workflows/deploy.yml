@@ -24,7 +24,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+      - name: Checkout scratch-gui
+        uses: actions/checkout@v4
         with:
           repository: scratchfoundation/scratch-gui
           ref: develop
