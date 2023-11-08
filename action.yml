@@ -9,6 +9,8 @@ inputs:
     description: 'Log file path'
   home-url:
     description: 'Home URL'
+  title:
+    description: 'Title'
 runs:
   using: 'node20'
   main: 'dist/index.js'

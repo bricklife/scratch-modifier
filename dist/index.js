@@ -25958,6 +25958,15 @@ try {
         code = code.replace(/https:\/\/scratch.mit.edu/, homeUrl);
         fs.writeFileSync(filePath, code);
     }
+
+    const title = core.getInput('title');
+    if (title) {
+        console.log(`title: '${title}'`);
+        const filePath = path.join(scratchGuiDir, 'webpack.config.js');
+        let code = fs.readFileSync(filePath, 'utf-8');
+        code = code.replace(/Scratch 3.0 GUI/g, title);
+        fs.writeFileSync(filePath, code);
+    }
 } catch (error) {
     core.setFailed(error.message);
 }
