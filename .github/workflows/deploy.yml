@@ -35,6 +35,11 @@ jobs:
           node-version: 14
       - run: npm ci
         working-directory: ./scratch-gui
+      - name: Modify Scratch
+        uses: bricklife/scratch-modifier@main
+        with:
+          scratch-gui-dir: ./scratch-gui
+          logo-file: ./demo/logo.svg
       - run: npm run build
         working-directory: ./scratch-gui
       - name: Upload artifact
