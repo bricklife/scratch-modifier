@@ -25968,7 +25968,7 @@ try {
         fs.writeFileSync(filePath, code);
     }
 
-    const hideComingSoon = core.getInput('hide-coming-soon');
+    const hideComingSoon = core.getBooleanInput('hide-coming-soon');
     if (hideComingSoon) {
         console.log(`hide-coming-soon: '${hideComingSoon}'`);
         const filePath = path.join(scratchGuiDir, 'src/playground/render-gui.jsx');
