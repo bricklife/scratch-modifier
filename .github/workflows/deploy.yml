@@ -43,6 +43,7 @@ jobs:
           scratch-gui-dir: ./scratch-gui
           logo-file: ./demo/logo.svg
           home-url: https://bricklife.com/scratch-modifier/
+          title: Scratch 3.0 MOD
       - run: npm run build
         working-directory: ./scratch-gui
       - name: Upload artifact
