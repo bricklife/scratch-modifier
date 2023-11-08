@@ -18,7 +18,7 @@ try {
         console.log(`home-url: '${homeUrl}'`);
         const filePath = path.join(scratchGuiDir, 'src/playground/render-gui.jsx');
         let code = fs.readFileSync(filePath, 'utf-8');
-        code = code.replace(/https:\/\/scratch.mit.edu/, 'http://bricklife.com');
+        code = code.replace(/https:\/\/scratch.mit.edu/, homeUrl);
         fs.writeFileSync(filePath, code);
     }
 } catch (error) {
