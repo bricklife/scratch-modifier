@@ -4,7 +4,7 @@ const fs = require('fs');
 
 try {
     const scratchGuiDir = core.getInput('scratch-gui-dir', { required: true });
-    console.log(`scratch-gui-dir: '${scratchGuiDir}'`);
+    console.log(`scratch-gui-dir: ${scratchGuiDir}`);
 
     const logoFile = core.getInput('logo-file');
     if (logoFile) {
@@ -15,7 +15,7 @@ try {
 
     const homeUrl = core.getInput('home-url');
     if (homeUrl) {
-        console.log(`home-url: '${homeUrl}'`);
+        console.log(`home-url: ${homeUrl}`);
         const filePath = path.join(scratchGuiDir, 'src/playground/render-gui.jsx');
         let code = fs.readFileSync(filePath, 'utf-8');
         code = code.replace(/https:\/\/scratch.mit.edu/, homeUrl);
@@ -24,7 +24,7 @@ try {
 
     const title = core.getInput('title');
     if (title) {
-        console.log(`title: '${title}'`);
+        console.log(`title: ${title}`);
         const filePath = path.join(scratchGuiDir, 'webpack.config.js');
         let code = fs.readFileSync(filePath, 'utf-8');
         code = code.replace(/Scratch 3.0 GUI/g, title);
@@ -33,7 +33,7 @@ try {
 
     const hideComingSoon = core.getBooleanInput('hide-coming-soon');
     if (hideComingSoon) {
-        console.log(`hide-coming-soon: '${hideComingSoon}'`);
+        console.log(`hide-coming-soon: ${hideComingSoon}`);
         const filePath = path.join(scratchGuiDir, 'src/playground/render-gui.jsx');
         let code = fs.readFileSync(filePath, 'utf-8');
         code = code.replace(/^\s*showComingSoon\n/gm, '');
@@ -42,7 +42,7 @@ try {
 
     const hideBackpack = core.getBooleanInput('hide-backpack');
     if (hideBackpack) {
-        console.log(`hide-backpack: '${hideBackpack}'`);
+        console.log(`hide-backpack: ${hideBackpack}`);
         const filePath = path.join(scratchGuiDir, 'src/playground/render-gui.jsx');
         let code = fs.readFileSync(filePath, 'utf-8');
         code = code.replace(/^\s*backpackVisible\n/gm, '');
