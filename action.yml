@@ -7,6 +7,8 @@ inputs:
     default: '.'
   logo-file:
     description: 'Log file path'
+  home-url:
+    description: 'Home URL'
 runs:
   using: 'node20'
   main: 'dist/index.js'
