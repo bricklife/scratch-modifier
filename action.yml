@@ -1,0 +1,12 @@
+name: 'Scratch Modifier'
+description: 'Modify your Scratch'
+inputs:
+  scratch-gui-dir:
+    description: 'scratch-gui directory'
+    required: true
+    default: '.'
+  logo-file:
+    description: 'Log file path'
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
