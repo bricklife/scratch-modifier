@@ -39,6 +39,15 @@ try {
         code = code.replace(/^\s*showComingSoon\n/gm, '');
         fs.writeFileSync(filePath, code);
     }
+
+    const hideBackpack = core.getBooleanInput('hide-backpack');
+    if (hideBackpack) {
+        console.log(`hide-backpack: '${hideBackpack}'`);
+        const filePath = path.join(scratchGuiDir, 'src/playground/render-gui.jsx');
+        let code = fs.readFileSync(filePath, 'utf-8');
+        code = code.replace(/^\s*backpackVisible\n/gm, '');
+        fs.writeFileSync(filePath, code);
+    }
 } catch (error) {
     core.setFailed(error.message);
 }

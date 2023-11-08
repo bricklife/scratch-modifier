@@ -13,6 +13,8 @@ inputs:
     description: 'Title'
   hide-coming-soon:
     description: 'Hide coming soon'
+  hide-backpack:
+    description: 'Hide backpack'
 runs:
   using: 'node20'
   main: 'dist/index.js'
