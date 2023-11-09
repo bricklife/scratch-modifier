@@ -2,6 +2,39 @@ const core = require('@actions/core');
 const path = require('path');
 const fs = require('fs');
 
+function removeTrademarkedCostumes(scratchGuiDir) {
+    const trademarkNames = [
+        'Cat',
+        'Cat Flying',
+        'Giga',
+        'Giga Walking',
+        'Gobo',
+        'Nano',
+        'Pico',
+        'Pico Walking',
+        'Tera'
+    ];
+
+    let assetIds = [];
+    let filteredSprites = [];
+
+    const spritesJsonPath = path.join(scratchGuiDir, 'src/lib/libraries/sprites.json');
+    const sprites = JSON.parse(fs.readFileSync(spritesJsonPath, 'utf-8'));
+    sprites.forEach(sprite => {
+        if (trademarkNames.includes(sprite.name)) {
+            assetIds.push(...sprite.costumes.map(e => e.assetId));
+        } else {
+            filteredSprites.push(sprite);
+        }
+    });
+    fs.writeFileSync(spritesJsonPath, JSON.stringify(filteredSprites, null, 4));
+
+    const costumesJsonPath = path.join(scratchGuiDir, 'src/lib/libraries/costumes.json');
+    const costumes = JSON.parse(fs.readFileSync(costumesJsonPath, 'utf-8'));
+    const filteredCostumes = costumes.filter(e => !assetIds.includes(e.assetId));
+    fs.writeFileSync(costumesJsonPath, JSON.stringify(filteredCostumes, null, 4));
+}
+
 try {
     const scratchGuiDir = core.getInput('scratch-gui-dir', { required: true });
     console.log(`scratch-gui-dir: ${scratchGuiDir}`);
